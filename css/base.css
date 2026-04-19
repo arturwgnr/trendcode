@@ -1,0 +1,126 @@
+/* =============================================
+   BASE.CSS — Reset, variables, typography
+   ============================================= */
+
+/* Google Fonts imported in index.html */
+
+:root {
+  --color-primary:    #4f5e4b;
+  --color-bg:         #f5f2ee;
+  --color-text:       #1a1a1a;
+  --color-white:      #ffffff;
+  --color-muted:      #7a7a7a;
+  --color-border:     #e0dbd5;
+  --color-primary-lt: #6b7d67;
+  --color-surface:    #edeae5;
+
+  --font-heading: 'Syne', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --radius-sm:  6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.07);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+
+  --transition: 0.3s ease;
+
+  --max-width: 1200px;
+  --section-pad: 96px 24px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Typography ---- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.6rem, 6vw, 5rem);  font-weight: 700; }
+h2 { font-size: clamp(2rem, 4vw, 3rem);    font-weight: 700; }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 600; }
+h4 { font-size: 1.1rem; font-weight: 600; }
+
+p {
+  font-size: 1rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+ul { list-style: none; }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- Utilities ---- */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: rgba(79,94,75,0.1);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  max-width: 560px;
+  color: var(--color-muted);
+  margin-bottom: 56px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center .section-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}

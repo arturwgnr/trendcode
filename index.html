@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trend Code — A premium digital solutions agency crafting modern websites, brands, and digital experiences."
+    />
+    <title>Trend Code — Digital Solutions Agency</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+
+    <!-- UPDATE: Replace with your actual favicon -->
+    <!-- <link rel="icon" href="images/favicon.ico" /> -->
+  </head>
+  <body>
+    <!-- ================================================
+       SECTION 1: NAVBAR
+       UPDATE: Replace logo mark with <img src="images/logo.svg" alt="Trend Code">
+       UPDATE: Update href values on nav links and CTA
+  ================================================ -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <!-- Logo -->
+        <a href="#" class="logo" aria-label="Trend Code home">
+          <!-- UPDATE: Swap .logo__mark for <img src="images/logo.svg" alt="" aria-hidden="true"> -->
+          <div class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2 14L9 4L16 14"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <circle cx="9" cy="4" r="2" fill="white" />
+            </svg>
+          </div>
+          <span class="logo__wordmark">Trend Code</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="navbar__nav" id="navbar-nav" aria-label="Main navigation">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#work" class="nav-link">Our Work</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="btn btn--primary btn--sm"
+            >Get a Quote <span class="arrow" aria-hidden="true">→</span></a
+          >
+        </nav>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="navbar__hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="navbar-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ================================================
+         SECTION 2: HERO
+         UPDATE: Replace hero__image-wrap contents with your hero image
+         UPDATE: Update CTA href values
+    ================================================ -->
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero__inner">
+          <!-- Left: Copy -->
+          <div class="hero__content">
+            <div class="hero__eyebrow" aria-hidden="true">
+              <span class="hero__eyebrow-dot"></span>
+              <span class="hero__eyebrow-text">Available for new projects</span>
+            </div>
+
+            <h1 class="hero__title" id="hero-title">
+              We Build Digital <span>Experiences</span> That Convert
+            </h1>
+
+            <p class="hero__subtitle">
+              Trend Code is a premium digital solutions agency helping ambitious
+              brands stand out through strategy, design, and development.
+            </p>
+
+            <div class="hero__cta">
+              <a href="#work" class="btn btn--primary">
+                See Our Work <span class="arrow" aria-hidden="true">→</span>
+              </a>
+              <a href="#contact" class="btn btn--ghost">Start a Project</a>
+            </div>
+
+            <div class="hero__stats" aria-label="Key metrics">
+              <div>
+                <div class="hero__stat-number">100+</div>
+                <div class="hero__stat-label">Projects Delivered</div>
+              </div>
+              <div>
+                <div class="hero__stat-number">98%</div>
+                <div class="hero__stat-label">Client Satisfaction</div>
+              </div>
+              <div>
+                <div class="hero__stat-number">5★</div>
+                <div class="hero__stat-label">Average Rating</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Visual -->
+          <div class="hero__visual" aria-hidden="true">
+            <div class="hero__image-wrap">
+              <!-- UPDATE: Replace this div with:
+                 <img src="images/hero.jpg" alt="Trend Code digital design showcase" class="project-card__img" />
+            -->
+              <div class="hero__image-placeholder">
+                <!-- Hero Image Goes Here -->
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    width="48"
+                    height="48"
+                    rx="12"
+                    fill="rgba(79,94,75,0.15)"
+                  />
+                  <path
+                    d="M14 34L24 18L34 34"
+                    stroke="rgba(79,94,75,0.6)"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="24" cy="18" r="3" fill="rgba(79,94,75,0.6)" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Floating badge -->
+            <div class="hero__badge">
+              <div class="hero__badge-icon" aria-hidden="true">✦</div>
+              <div class="hero__badge-text">
+                <strong>Premium Quality</strong>
+                <span>Pixel-perfect delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+         SECTION 3: SERVICES
+    ================================================ -->
+      <section class="services" id="services" aria-labelledby="services-title">
+        <div class="services__inner">
+          <div class="text-center">
+            <span class="section-label">What We Do</span>
+            <h2 class="section-title" id="services-title">
+              Services Built for Results
+            </h2>
+            <p class="section-subtitle">
+              From strategy to launch, we deliver end-to-end digital solutions
+              that look great and perform even better.
+            </p>
+          </div>
+
+          <div class="services__grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+              <div class="service-card__icon" aria-hidden="true">⬡</div>
+              <h3>Web Design &amp; Development</h3>
+              <p>
+                Custom, responsive websites engineered for speed, accessibility,
+                and conversion. Built from scratch, no templates.
+              </p>
+              <span class="service-card__link" aria-hidden="true"
+                >Learn more →</span
+              >
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+              <div class="service-card__icon" aria-hidden="true">◈</div>
+              <h3>Brand Identity</h3>
+              <p>
+                Strategic visual identities that tell your story. Logos,
+                typography, colour systems, and full brand guidelines.
+              </p>
+              <span class="service-card__link" aria-hidden="true"
+                >Learn more →</span
+              >
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+              <div class="service-card__icon" aria-hidden="true">⬙</div>
+              <h3>Digital Strategy</h3>
+              <p>
+                Data-driven strategies that align your digital presence with
+                business goals. From SEO and content to growth roadmaps.
+              </p>
+              <span class="service-card__link" aria-hidden="true"
+                >Learn more →</span
+              >
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+              <div class="service-card__icon" aria-hidden="true">◫</div>
+              <h3>UI/UX Design</h3>
+              <p>
+                User-centred interfaces that reduce friction and delight.
+                Wireframes, prototypes, and full design systems.
+              </p>
+              <span class="service-card__link" aria-hidden="true"
+                >Learn more →</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+         SECTION 4: OUR WORK
+         UPDATE: Replace project-card__image-placeholder divs with real <img> tags
+         UPDATE: Update project titles, tags, and descriptions
+    ================================================ -->
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="work__inner">
+          <div class="work__header">
+            <div class="work__header-left">
+              <span class="section-label">Portfolio</span>
+              <h2 class="section-title" id="work-title">Selected Work</h2>
+              <p class="section-subtitle">
+                A curated look at projects we're proud of. Every one built with
+                purpose and precision.
+              </p>
+            </div>
+            <!-- UPDATE: Link to full portfolio page -->
+            <a href="#" class="btn btn--ghost"
+              >View All Projects
+              <span class="arrow" aria-hidden="true">→</span></a
+            >
+          </div>
+
+          <div class="work__grid">
+            <!-- Project 1 -->
+            <article class="project-card">
+              <div class="project-card__image">
+                <!-- UPDATE: Replace with <img src="images/project-1.jpg" alt="Project Name" class="project-card__img"> -->
+                <div
+                  class="project-card__image-placeholder"
+                  style="background: linear-gradient(135deg, #d5dbd4, #b8c4b6)"
+                >
+                  Project Screenshot 01
+                </div>
+              </div>
+              <div class="project-card__body">
+                <!-- UPDATE: Update tag, title, description -->
+                <span class="project-card__tag">E-commerce</span>
+                <h3>Lumière Boutique</h3>
+                <p>
+                  Full-stack e-commerce platform with custom checkout and
+                  product configurator.
+                </p>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+              <div class="project-card__image">
+                <!-- UPDATE: Replace with <img src="images/project-2.jpg" alt="Project Name" class="project-card__img"> -->
+                <div
+                  class="project-card__image-placeholder"
+                  style="background: linear-gradient(135deg, #cfd8d0, #aebdad)"
+                >
+                  Project Screenshot 02
+                </div>
+              </div>
+              <div class="project-card__body">
+                <!-- UPDATE: Update tag, title, description -->
+                <span class="project-card__tag">Brand Identity</span>
+                <h3>Solara Health</h3>
+                <p>
+                  Complete rebrand — logo, visual identity, brand guidelines,
+                  and web presence.
+                </p>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card">
+              <div class="project-card__image">
+                <!-- UPDATE: Replace with <img src="images/project-3.jpg" alt="Project Name" class="project-card__img"> -->
+                <div
+                  class="project-card__image-placeholder"
+                  style="background: linear-gradient(135deg, #c8d3c7, #a7b8a5)"
+                >
+                  Project Screenshot 03
+                </div>
+              </div>
+              <div class="project-card__body">
+                <!-- UPDATE: Update tag, title, description -->
+                <span class="project-card__tag">Web Design</span>
+                <h3>Vertex Capital</h3>
+                <p>
+                  Premium marketing site for a fintech firm —
+                  performance-optimised and conversion-focused.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+         SECTION 5: ABOUT / WHY US
+    ================================================ -->
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about__inner">
+          <!-- Left: Copy -->
+          <div>
+            <span class="section-label">Why Trend Code</span>
+            <h2 class="section-title" id="about-title">
+              Your business deserves more than average.
+            </h2>
+            <p class="section-subtitle">
+              Senior-level team. Every project gets our full attention from day
+              one.
+            </p>
+
+            <ul class="about__list" aria-label="Our advantages">
+              <li class="about__list-item">
+                <div class="about__list-icon" aria-hidden="true">⬡</div>
+                <div class="about__list-text">
+                  <strong>Senior-only execution</strong>
+                  <p>
+                    Every deliverable is handled by experienced designers and
+                    developers.
+                  </p>
+                </div>
+              </li>
+              <li class="about__list-item">
+                <div class="about__list-icon" aria-hidden="true">◈</div>
+                <div class="about__list-text">
+                  <strong>Strategy-first thinking</strong>
+                  <p>
+                    We start with your goals and work backwards. Every design
+                    decision is intentional and measurable.
+                  </p>
+                </div>
+              </li>
+              <li class="about__list-item">
+                <div class="about__list-icon" aria-hidden="true">⬙</div>
+                <div class="about__list-text">
+                  <strong>On time, every time</strong>
+                  <p>
+                    Transparent timelines and honest communication. You'll
+                    always know where your project stands.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Metric cards -->
+          <div class="about__visual" aria-label="Agency metrics">
+            <div class="about__visual-card">
+              <div class="about__visual-number">100+</div>
+              <div class="about__visual-label">
+                Projects delivered across 24 industries
+              </div>
+            </div>
+            <div class="about__visual-card">
+              <div class="about__visual-number">4yr</div>
+              <div class="about__visual-label">Ahead of the curve</div>
+            </div>
+            <div class="about__visual-card">
+              <div class="about__visual-number">100%</div>
+              <div class="about__visual-label">Remote-first, global reach</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+         SECTION 6: TESTIMONIALS
+         UPDATE: Replace avatar placeholders with real images
+         UPDATE: Replace with real client testimonials
+    ================================================ -->
+      <section
+        class="testimonials"
+        id="testimonials"
+        aria-labelledby="testimonials-title"
+      >
+        <div class="testimonials__inner">
+          <div class="text-center">
+            <span class="section-label">Client Love</span>
+            <h2 class="section-title" id="testimonials-title">
+              What Our Clients Say
+            </h2>
+            <p class="section-subtitle">
+              We measure success by our clients' growth. Here's what they have
+              to say.
+            </p>
+          </div>
+
+          <div class="testimonials__grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 stars">
+                ★★★★★
+              </div>
+              <div class="testimonial-card__quote" aria-hidden="true">"</div>
+              <p class="testimonial-card__text">
+                Trend Code completely transformed our online presence. The site
+                they built is fast, beautiful, and our conversions are up 40% in
+                three months.
+              </p>
+              <div class="testimonial-card__author">
+                <!-- UPDATE: Replace with <img src="images/avatar-1.jpg" alt="Sarah M." class="testimonial-card__avatar"> -->
+                <div class="testimonial-card__avatar" aria-hidden="true">
+                  👤
+                </div>
+                <div>
+                  <!-- UPDATE: Replace with real client name and role -->
+                  <span class="testimonial-card__author-name">Sarah M.</span>
+                  <span class="testimonial-card__author-role"
+                    >Founder, Lumière Boutique</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 stars">
+                ★★★★★
+              </div>
+              <div class="testimonial-card__quote" aria-hidden="true">"</div>
+              <p class="testimonial-card__text">
+                Exceptional attention to detail and a team that actually
+                listens. Our brand now feels as premium as our product —
+                couldn't be happier.
+              </p>
+              <div class="testimonial-card__author">
+                <!-- UPDATE: Replace with real avatar image -->
+                <div class="testimonial-card__avatar" aria-hidden="true">
+                  👤
+                </div>
+                <div>
+                  <!-- UPDATE: Replace with real client details -->
+                  <span class="testimonial-card__author-name">James K.</span>
+                  <span class="testimonial-card__author-role"
+                    >CMO, Solara Health</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-card__stars" aria-label="5 stars">
+                ★★★★★
+              </div>
+              <div class="testimonial-card__quote" aria-hidden="true">"</div>
+              <p class="testimonial-card__text">
+                We hired Trend Code for a web redesign and got so much more — a
+                full digital strategy that's still paying dividends a year
+                later.
+              </p>
+              <div class="testimonial-card__author">
+                <!-- UPDATE: Replace with real avatar image -->
+                <div class="testimonial-card__avatar" aria-hidden="true">
+                  👤
+                </div>
+                <div>
+                  <!-- UPDATE: Replace with real client details -->
+                  <span class="testimonial-card__author-name">Priya L.</span>
+                  <span class="testimonial-card__author-role"
+                    >CEO, Vertex Capital</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================
+         SECTION 7 (actually 6 in sequence): CONTACT
+         Form is visual only — no backend
+         UPDATE: Wire up form to your preferred form handler (e.g. Formspree, EmailJS)
+    ================================================ -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact__inner">
+          <!-- Left: Info -->
+          <div class="contact__info">
+            <span class="section-label">Get in Touch</span>
+            <h2 class="section-title" id="contact-title">
+              Let's Build Something Great Together
+            </h2>
+            <p class="section-subtitle">
+              Have a project in mind? We'd love to hear about it. Send us a
+              message and we'll get back to you within 24 hours.
+            </p>
+
+            <ul class="contact__details" aria-label="Contact information">
+              <li class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">✉</div>
+                <div class="contact__detail-text">
+                  <strong>Email</strong>
+                  <!-- UPDATE: Replace with your real email address -->
+                  <span>hello@trendcode.agency</span>
+                </div>
+              </li>
+              <li class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">📍</div>
+                <div class="contact__detail-text">
+                  <strong>Location</strong>
+                  <!-- UPDATE: Replace with your location -->
+                  <span>Remote-first · Worldwide</span>
+                </div>
+              </li>
+              <li class="contact__detail">
+                <div class="contact__detail-icon" aria-hidden="true">⏱</div>
+                <div class="contact__detail-text">
+                  <strong>Response time</strong>
+                  <span>Within 24 hours</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="contact-form" role="form" aria-label="Contact form">
+            <!-- UPDATE: Add action and method attributes, or connect to Formspree / EmailJS -->
+            <form novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Jane Smith"
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="jane@company.com"
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject">Subject</label>
+                <input
+                  type="text"
+                  id="contact-subject"
+                  name="subject"
+                  placeholder="New project enquiry"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  placeholder="Tell us about your project, goals, and timeline..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn--primary"
+                style="width: 100%; justify-content: center"
+              >
+                Send Message <span class="arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================================
+       SECTION 8: FOOTER
+       UPDATE: Replace logo with real image
+       UPDATE: Update social media links (LinkedIn, Instagram)
+       UPDATE: Update nav link hrefs
+  ================================================ -->
+    <footer class="footer" aria-label="Site footer">
+      <div class="footer__inner">
+        <div class="footer__grid">
+          <!-- Column 1: Brand -->
+          <div>
+            <!-- UPDATE: Swap logo mark for <img src="images/logo-white.svg" alt="Trend Code"> -->
+            <a
+              href="#home"
+              class="logo logo--light"
+              aria-label="Trend Code home"
+            >
+              <div class="logo__mark" aria-hidden="true">
+                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M2 14L9 4L16 14"
+                    stroke="white"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <circle cx="9" cy="4" r="2" fill="white" />
+                </svg>
+              </div>
+              <span class="logo__wordmark">Trend Code</span>
+            </a>
+
+            <p class="footer__brand-desc">
+              Premium digital solutions agency crafting modern websites, brands,
+              and digital experiences that convert.
+            </p>
+
+            <!-- Social icons — UPDATE hrefs with real profile URLs -->
+            <nav class="social-icons" aria-label="Social media links">
+              <!-- UPDATE: Replace # with your LinkedIn URL -->
+              <a
+                href="#"
+                class="social-icon"
+                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <!-- UPDATE: Replace # with your Instagram URL -->
+              <a
+                href="#"
+                class="social-icon"
+                aria-label="Instagram"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Column 2: Services -->
+          <nav aria-label="Services">
+            <h4 class="footer__col-title">Services</h4>
+            <ul class="footer__links">
+              <!-- UPDATE: Link to dedicated service pages when created -->
+              <li><a href="#services">Web Design &amp; Development</a></li>
+              <li><a href="#services">Brand Identity</a></li>
+              <li><a href="#services">Digital Strategy</a></li>
+              <li><a href="#services">UI/UX Design</a></li>
+            </ul>
+          </nav>
+
+          <!-- Column 3: Company -->
+          <nav aria-label="Company pages">
+            <h4 class="footer__col-title">Company</h4>
+            <ul class="footer__links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#work">Our Work</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <!-- Column 4: Newsletter -->
+          <div>
+            <h4 class="footer__col-title">Stay in the loop</h4>
+            <p
+              style="
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.55);
+                margin-bottom: 0;
+              "
+            >
+              Get insights on design, development, and digital trends.
+            </p>
+            <!-- Visual only — UPDATE: Wire to Mailchimp / ConvertKit / etc. -->
+            <form
+              class="newsletter-form"
+              novalidate
+              aria-label="Newsletter signup"
+            >
+              <input
+                type="email"
+                name="newsletter-email"
+                placeholder="Your email address"
+                aria-label="Email address for newsletter"
+              />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer__bottom">
+          <p>© 2026 Artur Wagner. All rights reserved.</p>
+          <!-- UPDATE: Add real privacy policy / terms pages -->
+          <p style="display: flex; gap: 20px; flex-wrap: wrap">
+            <a
+              href="#"
+              style="
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.4);
+                transition: color 0.3s;
+              "
+              onmouseover="this.style.color = 'rgba(255,255,255,0.75)'"
+              onmouseout="this.style.color = 'rgba(255,255,255,0.4)'"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              style="
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.4);
+                transition: color 0.3s;
+              "
+              onmouseover="this.style.color = 'rgba(255,255,255,0.75)'"
+              onmouseout="this.style.color = 'rgba(255,255,255,0.4)'"
+              >Terms of Service</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================================================
+       SCRIPTS — Navbar scroll effect + mobile menu
+  ================================================ -->
+    <script>
+      /* Navbar: add .scrolled class on scroll */
+      const navbar = document.getElementById("navbar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.classList.toggle("scrolled", window.scrollY > 24);
+        },
+        { passive: true },
+      );
+
+      /* Mobile hamburger toggle */
+      const hamburger = document.getElementById("hamburger");
+      const nav = document.getElementById("navbar-nav");
+
+      hamburger.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        hamburger.setAttribute("aria-expanded", isOpen);
+      });
+
+      /* Close mobile nav when a link is clicked */
+      nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      /* Active nav link highlight on scroll */
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                link.classList.toggle(
+                  "active",
+                  link.getAttribute("href") === "#" + entry.target.id,
+                );
+              });
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -55% 0px" },
+      );
+
+      sections.forEach((s) => observer.observe(s));
+    </script>
+  </body>
+</html>
