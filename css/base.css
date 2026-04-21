@@ -5,7 +5,7 @@
 /* Google Fonts imported in index.html */
 
 :root {
-  --color-primary:    #4f5e4b;
+  --color-primary:rgb(91, 107, 87);
   --color-bg:         #f5f2ee;
   --color-text:       #1a1a1a;
   --color-white:      #ffffff;

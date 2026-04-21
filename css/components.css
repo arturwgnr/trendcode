@@ -19,7 +19,7 @@
 .logo__mark {
   width: 36px;
   height: 36px;
-  background: var(--color-primary);
+  background: transparent;
   border-radius: 9px;
   display: flex;
   align-items: center;
