@@ -1,0 +1,22 @@
+Read Claude.md before doing anything.
+
+## Task
+The `.card-stack` inside `.hero__image-wrap` is not horizontally centered on the page. Fix the alignment so the card stack sits centered within the hero visual column.
+
+## Current behavior
+The card stack appears pushed to the left inside the hero right column. The cards overflow or don't align to the center of their container.
+
+## Expected behavior
+The card stack should be horizontally centered inside `.hero__visual` / `.hero__image-wrap` at all breakpoints — desktop, tablet, and mobile.
+
+## What to check and fix
+1. `.hero__image-wrap` in `layout.css` — ensure it has `display: flex`, `justify-content: center`, or equivalent to center its child
+2. `.card-stack` in `components.css` — ensure it has `width: 100%`, `max-width: 540px`, and `margin: 0 auto`
+3. `.stack-card` in `components.css` — ensure `box-sizing: border-box` is set so padding doesn't cause overflow
+4. Check mobile breakpoint (`max-width: 768px`) — the stack should also be centered when it appears below the hero text in single column layout
+
+## Constraints
+- Do not change any other section
+- Do not change the card stack HTML structure
+- Only modify `layout.css` and `components.css`
+- Do not use JavaScript for alignment

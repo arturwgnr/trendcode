@@ -5,24 +5,31 @@
 /* Google Fonts imported in index.html */
 
 :root {
-  --color-primary:rgb(91, 107, 87);
-  --color-bg:         #f5f2ee;
-  --color-text:       #1a1a1a;
-  --color-white:      #ffffff;
-  --color-muted:      #7a7a7a;
-  --color-border:     #e0dbd5;
-  --color-primary-lt: #6b7d67;
-  --color-surface:    #edeae5;
+  --color-primary: #416339;
+  --color-bg: #f5f2ee;
+  --color-text: #1a1a1a;
+  --color-white: #ffffff;
+  --color-muted: #7a7a7a;
+  --color-border: #e0dbd5;
+  --color-primary-lt: #587751;
+  --color-surface: #edeae5;
 
-  --font-heading: 'Syne', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --color-primary-gradient: linear-gradient(
+    135deg,
+    #4d6646 0%,
+    #5e8b56 50%,
+    #4d6646 100%
+  );
 
-  --radius-sm:  6px;
+  --font-heading: "Syne", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.07);
-  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.12);
 
   --transition: 0.3s ease;
 
@@ -30,7 +37,9 @@
   --section-pad: 96px 24px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -51,17 +60,34 @@ body {
 
 /* ---- Typography ---- */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
-h1 { font-size: clamp(2.6rem, 6vw, 5rem);  font-weight: 700; }
-h2 { font-size: clamp(2rem, 4vw, 3rem);    font-weight: 700; }
-h3 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 600; }
-h4 { font-size: 1.1rem; font-weight: 600; }
+h1 {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 700;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+}
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
 p {
   font-size: 1rem;
@@ -75,7 +101,9 @@ a {
   transition: color var(--transition);
 }
 
-ul { list-style: none; }
+ul {
+  list-style: none;
+}
 
 img {
   display: block;
@@ -99,7 +127,7 @@ img {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-primary);
-  background: rgba(79,94,75,0.1);
+  background: rgba(79, 94, 75, 0.1);
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 20px;
