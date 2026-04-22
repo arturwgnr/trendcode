@@ -1,0 +1,79 @@
+Leia o Claude.md na raiz do projeto para entender o contexto completo antes de qualquer alteração.
+
+## Tarefa
+Implementar um stack de 3 cards interativo no hero visual, substituindo o mockup estático atual dentro de `.hero__image-wrap` no `index.html`.
+
+## Comportamento
+- 3 cards sobrepostos em camadas estilo baralho
+- Card da frente em evidência (rotação 0deg), meio (-4deg), fundo (-8deg)
+- Clicar em qualquer lugar no stack move o card da frente para o fundo (rotação cíclica)
+- Transição suave: 0.45s ease
+- Hover no stack inteiro: translateY(-4px), transition 0.3s ease
+- Cursor pointer no stack
+- Em touch devices (hover: none): desativar o translateY do hover
+
+## Os 3 cards (browser mockup CSS — sem imagens reais)
+
+### Card 1 — Lumière Boutique (frente)
+- Background do card: #e8ede6
+- URL: lumiereboutique.com
+- Brand: LUMIÈRE
+- Hero interno: gradiente linear #2c3a2e → #3d5c42
+- Headline: "Luxury / Redefined."
+- Grid: 3 produtos (Silk Blouse €149, Linen Coat €289, Wool Dress €199)
+- Stats: +40% Conversions / 98% Satisfaction / Live
+- Tag: "E-commerce · Lumière Boutique · Delivered by Trend Code"
+
+### Card 2 — Solara Health (meio)
+- Background do card: #d6e0d3
+- URL: solarahealth.com
+- Brand: SOLARA
+- Hero interno: gradiente linear #1e3028 → #2e4a38
+- Headline: "Health / Elevated."
+- Grid: 3 serviços com placeholders coloridos + labels (Wellness, Nutrition, Care)
+- Stats: 2.4k Patients / 96% Retention / Live
+- Tag: "Brand Identity · Solara Health · Delivered by Trend Code"
+
+### Card 3 — Vertex Capital (fundo)
+- Background do card: #c4d4c0
+- URL: vertexcapital.io
+- Brand: VERTEX
+- Hero interno: gradiente linear #1a2420 → #2a3d36
+- Headline: "Capital / Reimagined."
+- Grid: 3 métricas com placeholders (Growth, Returns, Portfolio)
+- Stats: €2.1B AUM / 34% ROI / Live
+- Tag: "Web Design · Vertex Capital · Delivered by Trend Code"
+
+## Estrutura interna de cada card
+Cada card deve conter:
+1. Barra de browser: 3 dots (círculos #e8e8e2) + URL centralizada em pill
+2. Navbar fake: brand text + 3 barras placeholder + botão pill verde escuro
+3. Hero area: gradiente escuro + eyebrow label + headline bold + botão "Explore →"
+4. Grid 3 colunas: placeholder colorido (44px altura) + label + valor/preço
+5. Stats bar: 2 métricas em fundo claro + 1 pill verde escuro "Live / View Site →"
+6. Tag line abaixo do frame: dot verde + texto descritivo
+
+## CSS
+- Todo CSS novo vai em `components.css`
+- Usar variáveis existentes do projeto (--radius-lg, --shadow-card, --transition, etc.)
+- Nome de classes: `.card-stack`, `.stack-card`, `.stack-card--front`, `.stack-card--mid`, `.stack-card--back`
+- Cada card tem `position: absolute`, o wrapper `.card-stack` tem `position: relative` com altura definida
+- Adicionar estados de transição para a animação de rotação cíclica
+
+## JS
+- Vanilla JS only
+- Adicionar ao bloco `<script>` existente no final do `index.html`
+- Lógica: ao clicar no `.card-stack`, reordenar os índices dos cards (0→1→2→0)
+- Usar classes CSS para controlar qual card está na frente/meio/fundo
+
+## Responsivo
+- Mobile (max-width: 768px): rotações reduzidas (0deg, -3deg, -6deg), cards ocupam largura total
+- Manter aspect-ratio 3/2 no mobile para o wrapper
+- Hover translateY desativado em @media (hover: none)
+
+## Restrições
+- Não quebrar nenhuma outra seção
+- Manter `aria-hidden="true"` no `.hero__visual`
+- Manter o `.hero__badge` intacto (está fora do `.hero__image-wrap`)
+- Não usar JS frameworks ou bibliotecas externas
+- Testar mentalmente nos 3 breakpoints: 1024px, 768px, 480px
