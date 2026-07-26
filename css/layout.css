@@ -264,6 +264,10 @@ a:has(.project-card) {
 .services {
   padding: var(--section-pad);
   background: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .services__inner {
@@ -281,6 +285,10 @@ a:has(.project-card) {
 
 .work {
   padding: var(--section-pad);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .work__inner {
@@ -312,6 +320,10 @@ a:has(.project-card) {
   padding: var(--section-pad);
   background: var(--color-primary-gradient);
   color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about__inner {
@@ -416,6 +428,10 @@ a:has(.project-card) {
 .testimonials {
   padding: var(--section-pad);
   background: var(--color-surface);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .testimonials__inner {
@@ -433,6 +449,10 @@ a:has(.project-card) {
 
 .contact {
   padding: var(--section-pad);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact__inner {
@@ -608,9 +628,17 @@ a:has(.project-card) {
     display: flex;
   }
 
+  .hero,
+  .services,
+  .work,
+  .about,
+  .testimonials,
+  .contact {
+    min-height: auto;
+  }
+
   .hero {
     padding: 120px 24px 72px;
-    min-height: auto;
   }
 
   .hero__inner {
