@@ -102,7 +102,7 @@
         <div class="work__inner">
           <div class="text-center">
             <span class="section-label">Portfolio</span>
-            <h2 class="section-title" id="work-title">All Projects</h2>
+            <h2 class="section-title" id="work-title">All Projects test</h2>
             <p class="section-subtitle">
               Every project we've shipped, built with the same care and
               precision. From full-stack web apps to complete brand overhauls.
@@ -111,6 +111,35 @@
 
           <div class="work__grid">
             <!-- Project 1 -->
+            <a href="https://lifequest-assist.vercel.app/" target="_blank">
+              <article class="project-card">
+                <div class="project-card__image">
+                  <div
+                    class="project-card__image-placeholder"
+                    style="
+                      background: linear-gradient(135deg, #1a1a2e, #16213e);
+                    "
+                  >
+                    <img
+                      class="portifolio-thumbnail"
+                      src="./images/life-quest-logo.png"
+                      alt="lifeQuest App"
+                    />
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <span class="project-card__tag">Web App</span>
+                  <h3>lifeQuest</h3>
+                  <p>
+                    Full-stack task and self-improvement app with AI-assisted
+                    task drafting, dependency chains, progress tracking, and an
+                    Oracle journal.
+                  </p>
+                </div>
+              </article>
+            </a>
+
+            <!-- Project 2 -->
             <a
               href="https://flowee-finance-oficial.vercel.app/"
               target="_blank"
@@ -141,7 +170,68 @@
               </article>
             </a>
 
-            <!-- Project 2 -->
+            <!-- Project 3 -->
+            <a href="https://ascendly-2-0.vercel.app/" target="_blank">
+              <article class="project-card">
+                <div class="project-card__image">
+                  <div
+                    class="project-card__image-placeholder"
+                    style="
+                      background: linear-gradient(135deg, #2c2620, #1c1916);
+                    "
+                  >
+                    <img
+                      class="portifolio-thumbnail"
+                      src="./images/ascendly.png"
+                      alt="Ascendly App"
+                    />
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <span class="project-card__tag">Web App</span>
+                  <h3>Ascendly</h3>
+                  <p>
+                    Premium self-improvement app for tracking study sessions,
+                    daily habits, tasks, and journal entries with AI-powered
+                    insights and gamification.
+                  </p>
+                </div>
+              </article>
+            </a>
+
+            <!-- Project 4 -->
+            <a
+              href="https://d3dqv5zmnyktgl.cloudfront.net/index.html"
+              target="_blank"
+            >
+              <article class="project-card">
+                <div class="project-card__image">
+                  <div
+                    class="project-card__image-placeholder"
+                    style="
+                      background: linear-gradient(135deg, #1a1612, #2c2218);
+                    "
+                  >
+                    <img
+                      class="portifolio-thumbnail"
+                      src="./images/aw-thumb.png"
+                      alt="Artur Wagner Portfolio"
+                    />
+                  </div>
+                </div>
+                <div class="project-card__body">
+                  <span class="project-card__tag">Portfolio</span>
+                  <h3>Online Curriculum</h3>
+                  <p>
+                    Cloud and Software Engineer based in Cork, Ireland. Builds
+                    and deploys full-stack applications and AWS infrastructure
+                    end-to-end.
+                  </p>
+                </div>
+              </article>
+            </a>
+
+            <!-- Project 5 -->
             <a href="https://www.sostranspaletes.com.br/" target="_blank">
               <article class="project-card">
                 <div class="project-card__image">
@@ -170,7 +260,7 @@
               </article>
             </a>
 
-            <!-- Project 3 -->
+            <!-- Project 6 -->
             <a
               href="https://mmanumakeup-appointment.vercel.app"
               target="_blank"
@@ -550,37 +640,51 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
           const pending = appendMessage("Typing…", "bot");
 
-          try {
-            const res = await fetch(
-              `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  contents: chatHistory,
-                  systemInstruction: {
-                    parts: [{ text: GEMINI_SYSTEM_PROMPT }],
-                  },
-                }),
-              },
-            );
+          async function fetchReply() {
+            try {
+              const res = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    contents: chatHistory,
+                    systemInstruction: {
+                      parts: [{ text: GEMINI_SYSTEM_PROMPT }],
+                    },
+                  }),
+                },
+              );
 
-            if (!res.ok) throw new Error("Gemini request failed");
+              if (!res.ok) throw new Error("Gemini request failed");
 
-            const data = await res.json();
-            const reply =
-              data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
-              "Sorry, I didn't catch that — could you rephrase, or reach us directly at trendcode@hotmail.com?";
+              const data = await res.json();
+              const reply =
+                data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
+                "Sorry, I didn't catch that — could you rephrase, or reach us directly at trendcode@hotmail.com?";
 
-            pending.textContent = reply;
-            chatHistory.push({ role: "model", parts: [{ text: reply }] });
-          } catch (err) {
+              return { ok: true, reply };
+            } catch (err) {
+              return { ok: false };
+            }
+          }
+
+          // Enforce a minimum 2s "Typing…" display, even if the API responds faster
+          const [result] = await Promise.all([
+            fetchReply(),
+            new Promise((resolve) => setTimeout(resolve, 2000)),
+          ]);
+
+          if (result.ok) {
+            pending.textContent = result.reply;
+            chatHistory.push({ role: "model", parts: [{ text: result.reply }] });
+          } else {
             pending.textContent =
               "I'm having trouble connecting right now — feel free to reach us directly at trendcode@hotmail.com.";
-          } finally {
-            chatInput.disabled = false;
-            chatInput.focus();
           }
+
+          chatInput.disabled = false;
+          chatInput.focus();
         });
       }
     </script>

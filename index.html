@@ -180,7 +180,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #e8e4de"
+                          style="background: #dde6d6"
                         ></div>
                         <div class="stack-card__item-label">Silk Blouse</div>
                         <div class="stack-card__item-value">€149</div>
@@ -188,7 +188,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #dde4dc"
+                          style="background: #d0e0c8"
                         ></div>
                         <div class="stack-card__item-label">Linen Coat</div>
                         <div class="stack-card__item-value">€289</div>
@@ -196,7 +196,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #e4e0d8"
+                          style="background: #e2ead8"
                         ></div>
                         <div class="stack-card__item-label">Wool Dress</div>
                         <div class="stack-card__item-value">€199</div>
@@ -253,7 +253,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #c8d8c4"
+                          style="background: #c7d6cd"
                         ></div>
                         <div class="stack-card__item-label">Wellness</div>
                         <div class="stack-card__item-value">2.4k</div>
@@ -261,7 +261,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #d4dfc0"
+                          style="background: #b9ccc2"
                         ></div>
                         <div class="stack-card__item-label">Nutrition</div>
                         <div class="stack-card__item-value">96%</div>
@@ -269,7 +269,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #bcd4c8"
+                          style="background: #d2ddd6"
                         ></div>
                         <div class="stack-card__item-label">Care</div>
                         <div class="stack-card__item-value">Live</div>
@@ -326,7 +326,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #c0ccc4"
+                          style="background: #9fb3a4"
                         ></div>
                         <div class="stack-card__item-label">Growth</div>
                         <div class="stack-card__item-value">€2.1B</div>
@@ -334,7 +334,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #b8c8c0"
+                          style="background: #8fa695"
                         ></div>
                         <div class="stack-card__item-label">Returns</div>
                         <div class="stack-card__item-value">34%</div>
@@ -342,7 +342,7 @@
                       <div class="stack-card__item">
                         <div
                           class="stack-card__item-img"
-                          style="background: #c8d0c4"
+                          style="background: #aabfaf"
                         ></div>
                         <div class="stack-card__item-label">Portfolio</div>
                         <div class="stack-card__item-value">Live</div>
@@ -371,15 +371,15 @@
                     >
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <!-- Floating badge -->
-            <div class="hero__badge">
-              <div class="hero__badge-icon" aria-hidden="true">ᨒ</div>
-              <div class="hero__badge-text">
-                <strong>Premium Quality</strong>
-                <span>On time delivery</span>
+                <!-- Floating badge (attached to the stack so it moves with hover) -->
+                <div class="hero__badge">
+                  <div class="hero__badge-icon" aria-hidden="true">ᨒ</div>
+                  <div class="hero__badge-text">
+                    <strong>Premium Quality</strong>
+                    <span>On time delivery</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1055,7 +1055,7 @@
       <div class="chat-widget__panel" id="chat-widget-panel">
         <div class="chat-widget__header">
           <strong>Trend Code Assistant</strong>
-          <span>Ask us anything — we'll point you in the right direction</span>
+          <span>Ask us anything! We'll point you in the right direction</span>
         </div>
         <div
           class="chat-widget__messages"
@@ -1064,7 +1064,7 @@
         >
           <div class="chat-widget__msg chat-widget__msg--bot">
             Hey! 👋 I'm the Trend Code assistant. Ask me about our services,
-            pricing, or how we work — happy to help.
+            pricing, or how we work! Happy to help.
           </div>
         </div>
         <form class="chat-widget__form" id="chat-widget-form">
@@ -1290,37 +1290,54 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
           const pending = appendMessage("Typing…", "bot");
 
-          try {
-            const res = await fetch(
-              `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  contents: chatHistory,
-                  systemInstruction: {
-                    parts: [{ text: GEMINI_SYSTEM_PROMPT }],
-                  },
-                }),
-              },
-            );
+          async function fetchReply() {
+            try {
+              const res = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    contents: chatHistory,
+                    systemInstruction: {
+                      parts: [{ text: GEMINI_SYSTEM_PROMPT }],
+                    },
+                  }),
+                },
+              );
 
-            if (!res.ok) throw new Error("Gemini request failed");
+              if (!res.ok) throw new Error("Gemini request failed");
 
-            const data = await res.json();
-            const reply =
-              data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
-              "Sorry, I didn't catch that — could you rephrase, or reach us directly at trendcode@hotmail.com?";
+              const data = await res.json();
+              const reply =
+                data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ||
+                "Sorry, I didn't catch that — could you rephrase, or reach us directly at trendcode@hotmail.com?";
 
-            pending.textContent = reply;
-            chatHistory.push({ role: "model", parts: [{ text: reply }] });
-          } catch (err) {
-            pending.textContent =
-              "I'm having trouble connecting right now — feel free to reach us directly at trendcode@hotmail.com.";
-          } finally {
-            chatInput.disabled = false;
-            chatInput.focus();
+              return { ok: true, reply };
+            } catch (err) {
+              return { ok: false };
+            }
           }
+
+          // Enforce a minimum 2s "Typing…" display, even if the API responds faster
+          const [result] = await Promise.all([
+            fetchReply(),
+            new Promise((resolve) => setTimeout(resolve, 2000)),
+          ]);
+
+          if (result.ok) {
+            pending.textContent = result.reply;
+            chatHistory.push({
+              role: "model",
+              parts: [{ text: result.reply }],
+            });
+          } else {
+            pending.textContent =
+              "I'm having trouble connecting right now... Feel free to reach us directly at trendcode@hotmail.com.";
+          }
+
+          chatInput.disabled = false;
+          chatInput.focus();
         });
       }
     </script>

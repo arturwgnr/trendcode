@@ -768,11 +768,20 @@
 }
 
 .stack-card__nav-cta {
-  background: #3d5c42;
   border-radius: 20px;
   padding: 4px 10px;
   font-size: 10px;
   color: #fff;
+}
+
+.stack-card--lumiere .stack-card__nav-cta {
+  background: #4f7048;
+}
+.stack-card--solara .stack-card__nav-cta {
+  background: #4a5f55;
+}
+.stack-card--vertex .stack-card__nav-cta {
+  background: #22362a;
 }
 
 .stack-card__hero {
@@ -780,13 +789,13 @@
 }
 
 .stack-card--lumiere .stack-card__hero {
-  background: linear-gradient(135deg, #2c3a2e 0%, #3d5c42 100%);
+  background: linear-gradient(135deg, #3f5c3a 0%, #5b6b57 100%);
 }
 .stack-card--solara .stack-card__hero {
-  background: linear-gradient(135deg, #1e3028 0%, #2e4a38 100%);
+  background: linear-gradient(135deg, #35473f 0%, #4a5f55 100%);
 }
 .stack-card--vertex .stack-card__hero {
-  background: linear-gradient(135deg, #1a2420 0%, #2a3d36 100%);
+  background: linear-gradient(135deg, #16241d 0%, #22362a 100%);
 }
 
 .stack-card__hero-eyebrow {
@@ -911,18 +920,6 @@
   font-size: 11px;
   color: #5a6b5c;
   font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .card-stack {
-    height: 100%;
-  }
-  .stack-card--mid {
-    transform: rotate(-3deg);
-  }
-  .stack-card--back {
-    transform: rotate(-6deg);
-  }
 }
 
 /* ---- CHAT WIDGET ---- */

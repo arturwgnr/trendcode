@@ -646,14 +646,8 @@ a:has(.project-card) {
     gap: 48px;
   }
 
-  .hero__image-wrap {
-    aspect-ratio: 3/2;
-    overflow: hidden;
-  }
-
-  .hero__badge {
-    bottom: -16px;
-    left: 16px;
+  .hero__visual {
+    display: none;
   }
 
   .hero__stats {
