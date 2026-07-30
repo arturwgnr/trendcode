@@ -102,7 +102,7 @@
         <div class="work__inner">
           <div class="text-center">
             <span class="section-label">Portfolio</span>
-            <h2 class="section-title" id="work-title">All Projects test</h2>
+            <h2 class="section-title" id="work-title">Some of the Projects</h2>
             <p class="section-subtitle">
               Every project we've shipped, built with the same care and
               precision. From full-stack web apps to complete brand overhauls.
@@ -492,7 +492,9 @@
         <div class="chat-widget__header">
           <div class="chat-widget__header-text">
             <strong>Trend Code Assistant</strong>
-            <span>Ask us anything — we'll point you in the right direction</span>
+            <span
+              >Ask us anything — we'll point you in the right direction</span
+            >
           </div>
           <button
             class="chat-widget__close"
@@ -622,10 +624,44 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
       if (chatWidget && chatToggle && chatForm) {
         const chatHistory = [];
 
+        function playSendSound() {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(600, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.12);
+          } catch (e) {}
+        }
+
+        function playReceiveSound() {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(500, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 0.06);
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.15);
+          } catch (e) {}
+        }
+
         chatToggle.addEventListener("click", () => {
-          const isOpen = chatWidget.classList.toggle("open");
-          chatToggle.setAttribute("aria-expanded", isOpen);
-          if (isOpen) chatInput.focus();
+          chatWidget.classList.add("open");
+          chatToggle.setAttribute("aria-expanded", "true");
+          chatInput.focus();
         });
 
         const chatClose = document.getElementById("chat-widget-close");
@@ -651,6 +687,7 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
           if (!text) return;
 
           appendMessage(text, "user");
+          playSendSound();
           chatHistory.push({ role: "user", parts: [{ text }] });
           chatInput.value = "";
           chatInput.disabled = true;
@@ -694,10 +731,15 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
           if (result.ok) {
             pending.textContent = result.reply;
-            chatHistory.push({ role: "model", parts: [{ text: result.reply }] });
+            playReceiveSound();
+            chatHistory.push({
+              role: "model",
+              parts: [{ text: result.reply }],
+            });
           } else {
             pending.textContent =
               "I'm having trouble connecting right now — feel free to reach us directly at trendcode@hotmail.com.";
+            playReceiveSound();
           }
 
           chatInput.disabled = false;

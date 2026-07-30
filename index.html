@@ -1266,7 +1266,7 @@
 
       /* AI Chat Assistant — Gemini API (client-side, free tier) */
       const GEMINI_API_KEY = "AIzaSyB4Mj6Kdp3IU5guJ-b891_hATvaiMZ1RGw";
-      const GEMINI_MODEL = "gemini-1.5-flash";
+      const GEMINI_MODEL = "gemini-2.0-flash-lite";
       const GEMINI_SYSTEM_PROMPT = `You are the friendly assistant for Trend Code, a premium digital solutions agency run by Artur Wagner.
 Trend Code builds custom websites, corporate sites, landing pages, brand identity, and UI/UX design — no templates, senior-only execution.
 Keep replies brief (2-4 sentences), warm, and not robotic. Never invent pricing — always redirect pricing questions to the contact form at the bottom of the page (#contact) or the email trendcode@hotmail.com.
@@ -1281,10 +1281,44 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
       if (chatWidget && chatToggle && chatForm) {
         const chatHistory = [];
 
+        function playSendSound() {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(600, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.12);
+          } catch (e) {}
+        }
+
+        function playReceiveSound() {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(500, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 0.06);
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 0.15);
+          } catch (e) {}
+        }
+
         chatToggle.addEventListener("click", () => {
-          const isOpen = chatWidget.classList.toggle("open");
-          chatToggle.setAttribute("aria-expanded", isOpen);
-          if (isOpen) chatInput.focus();
+          chatWidget.classList.add("open");
+          chatToggle.setAttribute("aria-expanded", "true");
+          chatInput.focus();
         });
 
         const chatClose = document.getElementById("chat-widget-close");
@@ -1310,6 +1344,7 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
           if (!text) return;
 
           appendMessage(text, "user");
+          playSendSound();
           chatHistory.push({ role: "user", parts: [{ text }] });
           chatInput.value = "";
           chatInput.disabled = true;
@@ -1353,6 +1388,7 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
           if (result.ok) {
             pending.textContent = result.reply;
+            playReceiveSound();
             chatHistory.push({
               role: "model",
               parts: [{ text: result.reply }],
@@ -1360,6 +1396,7 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
           } else {
             pending.textContent =
               "I'm having trouble connecting right now... Feel free to reach us directly at trendcode@hotmail.com.";
+            playReceiveSound();
           }
 
           chatInput.disabled = false;
