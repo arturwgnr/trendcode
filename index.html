@@ -1265,7 +1265,8 @@
       }
 
       /* AI Chat Assistant — Gemini API (client-side, free tier) */
-      const GEMINI_API_KEY = "AIzaSyB4Mj6Kdp3IU5guJ-b891_hATvaiMZ1RGw";
+      const GEMINI_API_KEY =
+        "AQ.Ab8RN6Jx5HpQP4004A1lto49UP0CU741OwMFd5AIjS0O8pasUg";
       const GEMINI_MODEL = "gemini-2.0-flash-lite";
       const GEMINI_SYSTEM_PROMPT = `You are the friendly assistant for Trend Code, a premium digital solutions agency run by Artur Wagner.
 Trend Code builds custom websites, corporate sites, landing pages, brand identity, and UI/UX design — no templates, senior-only execution.
@@ -1283,16 +1284,24 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
         function playSendSound() {
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = new (
+              window.AudioContext || window.webkitAudioContext
+            )();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.type = "sine";
             osc.frequency.setValueAtTime(600, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.08);
+            osc.frequency.exponentialRampToValueAtTime(
+              900,
+              ctx.currentTime + 0.08,
+            );
             gain.gain.setValueAtTime(0.15, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+            gain.gain.exponentialRampToValueAtTime(
+              0.001,
+              ctx.currentTime + 0.12,
+            );
             osc.start(ctx.currentTime);
             osc.stop(ctx.currentTime + 0.12);
           } catch (e) {}
@@ -1300,16 +1309,24 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
         function playReceiveSound() {
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = new (
+              window.AudioContext || window.webkitAudioContext
+            )();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.type = "sine";
             osc.frequency.setValueAtTime(500, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 0.06);
+            osc.frequency.exponentialRampToValueAtTime(
+              700,
+              ctx.currentTime + 0.06,
+            );
             gain.gain.setValueAtTime(0.1, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            gain.gain.exponentialRampToValueAtTime(
+              0.001,
+              ctx.currentTime + 0.15,
+            );
             osc.start(ctx.currentTime);
             osc.stop(ctx.currentTime + 0.15);
           } catch (e) {}
