@@ -1,0 +1,34 @@
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const { contents } = req.body;
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+  const GEMINI_MODEL = "gemini-flash-latest";
+  const SYSTEM_PROMPT = `You are the friendly assistant for Trend Code, a premium digital solutions agency run by Artur Wagner.
+Trend Code builds custom websites, corporate sites, landing pages, brand identity, and UI/UX design, no templates, senior-only execution.
+Keep replies brief (2-4 sentences), warm, and not robotic. Never invent pricing, always redirect pricing questions to the contact form (#contact) or trendcode@hotmail.com.
+If asked something unrelated to Trend Code's services, politely steer back to how Trend Code can help.`;
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents,
+          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        }),
+      },
+    );
+    const data = await response.json();
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
+    res.status(200).json({ reply });
+  } catch (err) {
+    console.error("Chat proxy error:", err);
+    res.status(500).json({ error: "Failed to get reply" });
+  }
+}
