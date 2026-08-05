@@ -1058,6 +1058,7 @@
 
     <!-- ================================================
        AI CHAT ASSISTANT (Gemini)
+       UPDATE: Replace GEMINI_API_KEY with a real key
     ================================================ -->
     <div class="chat-widget" id="chat-widget">
       <div class="chat-widget__panel" id="chat-widget-panel">
@@ -1264,6 +1265,13 @@
       }
 
       /* AI Chat Assistant — Gemini API (client-side, free tier) */
+      const GEMINI_API_KEY = "minha key ta aq";
+      const GEMINI_MODEL = "gemini-2.0-flash-latest";
+      const GEMINI_SYSTEM_PROMPT = `You are the friendly assistant for Trend Code, a premium digital solutions agency run by Artur Wagner.
+Trend Code builds custom websites, corporate sites, landing pages, brand identity, and UI/UX design — no templates, senior-only execution.
+Keep replies brief (2-4 sentences), warm, and not robotic. Never invent pricing — always redirect pricing questions to the contact form at the bottom of the page (#contact) or the email trendcode@hotmail.com.
+If asked something unrelated to Trend Code's services, politely steer back to how Trend Code can help and suggest getting in touch.`;
+
       const chatWidget = document.getElementById("chat-widget");
       const chatToggle = document.getElementById("chat-widget-toggle");
       const chatForm = document.getElementById("chat-widget-form");
@@ -1363,18 +1371,24 @@
             try {
               const res = await fetch("/api/chat", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ contents: chatHistory }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  contents: chatHistory,
+                }),
               });
 
-              if (!res.ok) throw new Error("Chat request failed");
-
               const data = await res.json();
-              const reply =
-                data.reply ||
-                "Sorry, I didn't catch that — could you rephrase, or reach us directly at trendcode@hotmail.com?";
 
-              return { ok: true, reply };
+              if (!res.ok) throw new Error(data.error || "Request failed");
+
+              return {
+                ok: true,
+                reply:
+                  data.reply ||
+                  "Sorry, I didn't catch that. Could you rephrase?",
+              };
             } catch (err) {
               return { ok: false };
             }
