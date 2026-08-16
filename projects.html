@@ -200,10 +200,7 @@
             </a>
 
             <!-- Project 4 -->
-            <a
-              href="https://d3dqv5zmnyktgl.cloudfront.net/index.html"
-              target="_blank"
-            >
+            <a href="https://aw-cv-vercel.vercel.app/" target="_blank">
               <article class="project-card">
                 <div class="project-card__image">
                   <div
@@ -626,16 +623,24 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
         function playSendSound() {
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = new (
+              window.AudioContext || window.webkitAudioContext
+            )();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.type = "sine";
             osc.frequency.setValueAtTime(600, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.08);
+            osc.frequency.exponentialRampToValueAtTime(
+              900,
+              ctx.currentTime + 0.08,
+            );
             gain.gain.setValueAtTime(0.15, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+            gain.gain.exponentialRampToValueAtTime(
+              0.001,
+              ctx.currentTime + 0.12,
+            );
             osc.start(ctx.currentTime);
             osc.stop(ctx.currentTime + 0.12);
           } catch (e) {}
@@ -643,16 +648,24 @@ If asked something unrelated to Trend Code's services, politely steer back to ho
 
         function playReceiveSound() {
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const ctx = new (
+              window.AudioContext || window.webkitAudioContext
+            )();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.type = "sine";
             osc.frequency.setValueAtTime(500, ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + 0.06);
+            osc.frequency.exponentialRampToValueAtTime(
+              700,
+              ctx.currentTime + 0.06,
+            );
             gain.gain.setValueAtTime(0.1, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+            gain.gain.exponentialRampToValueAtTime(
+              0.001,
+              ctx.currentTime + 0.15,
+            );
             osc.start(ctx.currentTime);
             osc.stop(ctx.currentTime + 0.15);
           } catch (e) {}
