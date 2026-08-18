@@ -23,17 +23,16 @@ If asked something unrelated to Trend Code's services, politely steer the conver
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "x-goog-api-key": GEMINI_API_KEY,
         },
         body: JSON.stringify({
           contents,
-          systemInstruction: {
-            parts: [{ text: SYSTEM_PROMPT }],
-          },
+          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
         }),
       },
     );
