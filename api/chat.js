@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const GEMINI_MODEL = "gemini-2.0-flash";
+  const GEMINI_MODEL = "gemini-flash-latest";
 
   const SYSTEM_PROMPT = `You are the friendly assistant for Trend Code, a premium digital solutions agency run by Artur Wagner.
 Trend Code builds custom websites, corporate sites, landing pages, brand identity, and UI/UX design—no templates, senior-only execution.
